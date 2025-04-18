@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="icon" type="image/x-icon" href="logo_AM.png">
+  <title>Top 20 Nike Shoes</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="logo_AM.png" alt="logo">
+        <h1 class="sitename">Sportzy</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><button class="btn btn-outline-light" onclick="viewCart()">Cart</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Top 20 Nike Shoes</h2>
+          <p>Explore our collection of the best Nike shoes.</p>
+        </div>
+        <div class="row gy-4">
+          <!-- Example Shoe Card -->
+          <script>
+            // Initialize cart from localStorage or create an empty array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            function addToCart(shoeName, shoePrice) {
+              cart.push({ name: shoeName, price: shoePrice });
+              localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
+              alert(`${shoeName} has been added to your cart.`);
+            }
+
+            function quickView(shoeName, shoeDetails) {
+              alert(`Quick View:\n${shoeName}\n${shoeDetails}`);
+            }
+
+            function viewCart() {
+              if (cart.length === 0) {
+                alert("Your cart is empty.");
+              } else {
+                let cartDetails = "Your Cart:\n";
+                cart.forEach((item, index) => {
+                  cartDetails += `${index + 1}. ${item.name} - £${item.price}\n`;
+                });
+                alert(cartDetails);
+              }
+            }
+          </script>
+
+          <!-- Repeat this block for each shoe -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="https://www.highsnobiety.com/static-assets/thumbor/zcp2j3cRyDtEVV0AijBppr9BG_o=/1200x800/https://whatdropsnow.s3.amazonaws.com/product_image/173622/shrine_image/487a6a98288ce0391a69a716330cbdca.jpg" class="card-img-top" alt="Nike Air Max 90">
+              <div class="card-body text-center">
+                <h5 class="card-title">Nike Air Max 90</h5>
+                <p class="card-text">£120.00</p>
+                <button class="btn btn-outline-light" onclick="quickView('Nike Air Max 90', 'Classic design with premium comfort.')">Quick View</button>
+                <button class="btn btn-outline-light" onclick="addToCart('Nike Air Max 90', 120)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat similar blocks for the remaining 19 shoes -->
+          <!-- Example for another shoe -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-force-1.png" class="card-img-top" alt="Nike Air Force 1">
+              <div class="card-body text-center">
+                <h5 class="card-title">Nike Air Force 1</h5>
+                <p class="card-text">£100.00</p>
+                <button class="btn btn-outline-dark" onclick="quickView('Nike Air Force 1', 'Timeless style with unmatched durability.')">Quick View</button>
+                <button class="btn btn-outline-dark" onclick="addToCart('Nike Air Force 1', 100)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Add more shoe cards here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer light-background">
+    <div class="container text-center">
+      <p>© <strong>Sportzy</strong> All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

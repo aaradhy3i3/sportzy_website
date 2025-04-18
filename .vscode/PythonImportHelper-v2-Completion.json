@@ -1,0 +1,44 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "get",
+        "kind": 2,
+        "importPath": "forms.main",
+        "description": "forms.main",
+        "peekOfCode": "def get():\n    return render_template(\"student_project.html\")\nif __name__ == \"__main__\":\n    app.run(debug=True ,port=3000)",
+        "detail": "forms.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "forms.main",
+        "description": "forms.main",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\" ,methods=['GET'])\ndef get():\n    return render_template(\"student_project.html\")\nif __name__ == \"__main__\":\n    app.run(debug=True ,port=3000)",
+        "detail": "forms.main",
+        "documentation": {}
+    }
+]
