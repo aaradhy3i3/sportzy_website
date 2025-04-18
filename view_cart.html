@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="icon" type="image/x-icon" href="logo_AM.png">
+  <title>View Cart</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="logo_AM.png" alt="logo">
+        <h1 class="sitename">Sportzy</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="top_nike_shoes.html">Top Nike Shoes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Your Cart</h2>
+          <p>Here are the items you have added to your cart.</p>
+        </div>
+        <div id="cart-items" class="row gy-4">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer light-background">
+    <div class="container text-center">
+      <p>© <strong>Sportzy</strong> All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p class="text-center">Your cart is empty.</p>';
+    } else {
+      cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'col-md-6 col-lg-4';
+        cartItem.innerHTML = `
+          <div class="card h-100">
+            <img src="${item.image}" class="card-img-top" alt="${item.name}">
+            <div class="card-body text-center">
+              <h5 class="card-title">${item.name}</h5>
+              <p class="card-text">Price: £${item.price}</p>
+              <button class="btn btn-outline-danger" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      location.reload(); // Reload the page to update the cart
+    }
+  </script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
